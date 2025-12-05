@@ -1,0 +1,26 @@
+data:
+  raw_train_path: "data/raw/train.parquet"
+  raw_test_path: "data/raw/test.parquet"
+  processed_dir: "data/processed"
+  final_train_path: "data/final/train_final.parquet"  # 备用
+  features_path: "results/feature_engineering/train_features.parquet"
+  labels_path: "data/raw/train_labels.csv"
+
+training:
+  random_seed: 42
+  n_folds: 5
+  target_col: "target"
+  feature_exclude:
+    - "customer_ID"
+  categorical_features: []
+  split:
+    val_ratio: 0.1
+    test_ratio: 0.2
+  cost_weights:
+    positive: 5.0
+    negative: 1.0
+  evaluation:
+    threshold: 0.35
+    cost_matrix:
+      false_positive: 1.0
+      false_negative: 5.0
